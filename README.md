@@ -12,6 +12,8 @@ ethSendSameValue/ethSendDifferentValue: Send ETH
 sendSameValue/sendDifferentValue: Send ERC20 token
 
 Head to Bscscan, and call these functions on the website.
+
+Need to approve ERC20 (set spender to this contract) first before using sendSameValue/sendDifferentValue.
   
 # Deployed address:
 heco multisend address: 0xF104c1F8346F6BfF0565106B15e1bC989d10216d
