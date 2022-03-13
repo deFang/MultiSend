@@ -12,7 +12,7 @@ contract Multisend {
 	event LogTokenBulkSent(address token, address from, uint256 total);
 
 
-    function ethSendSameValue(address[] memory _to, uint _value) external payable {
+    function ethSendSameValue(address[] calldata _to, uint _value) external payable {
 
         uint sendAmount = _to.length.mul(_value);
         uint remainingValue = msg.value;
@@ -28,7 +28,7 @@ contract Multisend {
         emit LogTokenBulkSentETH(from, remainingValue);
     }
 
-    function ethSendDifferentValue(address[] memory _to, uint[] memory _value) external payable {
+    function ethSendDifferentValue(address[] calldata _to, uint[] calldata _value) external payable {
 
         uint sendAmount = _value[0];
         uint remainingValue = msg.value;
@@ -45,7 +45,7 @@ contract Multisend {
 
     }
 
-    function sendSameValue(address _tokenAddress, address[] memory _to, uint _value) external {
+    function sendSameValue(address _tokenAddress, address[] calldata _to, uint _value) external {
 	    address from = msg.sender;
         require(_to.length <= 255, 'exceed max allowed');
         uint256 sendAmount = _to.length.mul(_value);
@@ -57,7 +57,7 @@ contract Multisend {
 
     }
 
-    function sendDifferentValue(address _tokenAddress, address[] memory _to, uint[] memory _value) external {
+    function sendDifferentValue(address _tokenAddress, address[] calldata _to, uint[] calldata _value) external {
 	    address from = msg.sender;
         require(_to.length == _value.length, 'invalid input');
         require(_to.length <= 255, 'exceed max allowed');
